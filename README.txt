@@ -2,8 +2,8 @@
 Contributors: yithemes
 Tags: yith, woocommerce, added to cart, popup, yit, added to cart popup, view cart, cart, shop, wc, shopping, modal, adding to cart, added to cart, shopping cart, WooCommerce cart
 Requires at least: 4.0
-Tested up to: 4.2
-Stable tag: 1.0.0
+Tested up to: 4.2.3
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,10 @@ A simple plugin that offers an extremely useful option: with YITH WooCommerce Ad
 2. The plugin popup
 
 == Changelog ==
+
+= 1.0.1 =
+
+* Fixed: Minor bugs
 
 = 1.0.0 =
 

@@ -58,10 +58,10 @@ if ( ! class_exists( 'YITH_WACP_Admin' ) ) {
 		/**
 		 * @var string Premium version landing link
 		 */
-		protected $_premium_landing = 'https://yithemes.com/themes/plugins/yith-woocommerce-quick-view/';
+		protected $_premium_landing = 'https://yithemes.com/themes/plugins/yith-woocommerce-added-to-cart-popup';
 
 		/**
-		 * @var string Waiting List panel page
+		 * @var string Added to Cart Popup panel page
 		 */
 		protected $_panel_page = 'yith_wacp_panel';
 
@@ -102,7 +102,7 @@ if ( ! class_exists( 'YITH_WACP_Admin' ) ) {
 			add_filter( 'plugin_action_links_' . plugin_basename( YITH_WACP_DIR . '/' . basename( YITH_WACP_FILE ) ), array( $this, 'action_links' ) );
 			add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 4 );
 
-			//add_action( 'yith_wacp_premium', array( $this, 'premium_tab' ) );
+			add_action( 'yith_wacp_premium', array( $this, 'premium_tab' ) );
 		}
 
 		/**
@@ -120,6 +120,7 @@ if ( ! class_exists( 'YITH_WACP_Admin' ) ) {
 		 */
 		public function action_links( $links ) {
 			$links[] = '<a href="' . admin_url( "admin.php?page={$this->_panel_page}" ) . '">' . __( 'Settings', 'yith-wacp' ) . '</a>';
+			//  $links[] = '<a href="' . $this->get_premium_landing_uri() . '" target="_blank">' . __( 'Premium Version', 'yith-wacp' ) . '</a>';
 
 			return $links;
 		}
@@ -142,6 +143,10 @@ if ( ! class_exists( 'YITH_WACP_Admin' ) ) {
 			$admin_tabs = array(
 				'general' => __( 'Settings', 'yith-wacp' ),
 			);
+
+			if ( ! ( defined( 'YITH_WACP_PREMIUM' ) && YITH_WACP_PREMIUM ) ) {
+				$admin_tabs['premium'] = __( 'Premium Version', 'yith-wacp' );
+			}
 
 			$args = array(
 				'create_menu_page' => true,
@@ -213,8 +218,8 @@ if ( ! class_exists( 'YITH_WACP_Admin' ) ) {
 		 * @author  Andrea Grillo <andrea.grillo@yithemes.com>
 		 * @return  string The premium landing link
 		 */
-		public function get_premium_landing_uri(){
-			return defined( 'YITH_REFER_ID' ) ? $this->_premium_landing . '?refer_id=' . YITH_REFER_ID : $this->_premium_landing;
+		public function get_premium_landing_uri() {
+			return defined( 'YITH_REFER_ID' ) ? $this->_premium_landing . '?refer_id=' . YITH_REFER_ID : $this->_premium_landing.'?refer_id=1030585';
 		}
 	}
 }
