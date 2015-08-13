@@ -59,13 +59,13 @@ if ( ! class_exists( 'YITH_WACP_Frontend' ) ) {
 		public function __construct() {
 
 			// enqueue scripts
-			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
 
 			// load template
 			add_action( 'wp_footer', array( $this, 'load_template' ) );
 
 
-			add_filter( 'add_to_cart_fragments', array( $this, 'add_to_cart_success_ajax' ) );
+			add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'add_to_cart_success_ajax' ) );
 
 		}
 
@@ -78,7 +78,6 @@ if ( ! class_exists( 'YITH_WACP_Frontend' ) ) {
 		public function enqueue_scripts(){
 
 			wp_register_style( 'yith-wacp-frontend', YITH_WACP_ASSETS_URL . '/css/wacp-frontend.css', array(), false, 'all' );
-
 
 			wp_register_script( 'yith-wacp-frontend-script', YITH_WACP_ASSETS_URL . '/js/wacp-frontend.js', array(), false, true );
 
@@ -145,10 +144,10 @@ if ( ! class_exists( 'YITH_WACP_Frontend' ) ) {
 
 			<div class="actions">
 				<?php if( $view_cart ) : ?>
-					<a class="button" href="<?php echo WC()->cart->get_cart_url(); ?>"><?php _e( 'View cart', 'yith-wacp' ) ?></a>
+					<a class="<?php echo apply_filters( 'yith_wacp_go_cart_class', 'button go-cart' ) ?>" href="<?php echo WC()->cart->get_cart_url(); ?>"><?php _e( 'View cart', 'yith-wacp' ) ?></a>
 				<?php endif ?>
 				<?php if( $continue ) : ?>
-					<a class="button continue-shopping" href="#"><?php _e( 'Continue shopping', 'yith-wacp' ) ?></a>
+					<a class="<?php echo apply_filters( 'yith_wacp_continue_shopping_class', 'button continue-shopping' ) ?>" href="#"><?php _e( 'Continue shopping', 'yith-wacp' ) ?></a>
 				<?php endif; ?>
 			</div>
 

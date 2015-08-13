@@ -72,7 +72,7 @@ if ( ! class_exists( 'YITH_WACP_Admin' ) ) {
 		 * @access public
 		 * @since 1.0.0
 		 */
-		public $doc_url = '#';
+		public $doc_url = 'http://yithemes.com/docs-plugins/yith-woocommerce-added-to-cart-popup/';
 
 		/**
 		 * Returns single instance of the class
@@ -120,7 +120,9 @@ if ( ! class_exists( 'YITH_WACP_Admin' ) ) {
 		 */
 		public function action_links( $links ) {
 			$links[] = '<a href="' . admin_url( "admin.php?page={$this->_panel_page}" ) . '">' . __( 'Settings', 'yith-wacp' ) . '</a>';
-			//  $links[] = '<a href="' . $this->get_premium_landing_uri() . '" target="_blank">' . __( 'Premium Version', 'yith-wacp' ) . '</a>';
+			if ( ! ( defined( 'YITH_WACP_PREMIUM' ) && YITH_WACP_PREMIUM ) ) {
+				$links[] = '<a href="' . $this->get_premium_landing_uri() . '" target="_blank">' . __( 'Premium Version', 'yith-wacp' ) . '</a>';
+			}
 
 			return $links;
 		}

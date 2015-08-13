@@ -3,7 +3,7 @@
  * Plugin Name: YITH WooCommerce Added to Cart Popup
  * Plugin URI: http://yithemes.com/
  * Description: YITH WooCommerce Added to Cart Popup plugin allow to displays popup cart for add to cart action
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Yithemes
  * Author URI: http://yithemes.com/
  * Text Domain: yith-wacp
@@ -11,7 +11,7 @@
  *
  * @author Yithemes
  * @package YITH WooCommerce Added to Cart Popup
- * @version 1.0.0
+ * @version 1.0.2
  */
 /*  Copyright 2015  Your Inspiration Themes  (email : plugins@yithemes.com)
 
@@ -59,7 +59,7 @@ register_activation_hook( __FILE__, 'yith_plugin_registration_hook' );
 
 
 if ( ! defined( 'YITH_WACP_VERSION' ) ){
-	define( 'YITH_WACP_VERSION', '1.0.1' );
+	define( 'YITH_WACP_VERSION', '1.0.2' );
 }
 
 if ( ! defined( 'YITH_WACP_FREE_INIT' ) ) {
